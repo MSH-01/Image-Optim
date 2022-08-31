@@ -1,4 +1,4 @@
-# Semester2_Team10
+# Image Optim
 
 ## When the Project is ran for the first time:
 ### Database Setup
