@@ -1,0 +1,15 @@
+.jumbotron {
+  text-align: center;
+  height: 200px;
+  margin-top: 70px;
+}
+
+
+
+.card-title {
+    margin-bottom: .75rem;
+}
+
+.card-body {
+  padding-left: 100px;
+}

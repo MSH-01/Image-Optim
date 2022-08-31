@@ -1,0 +1,39 @@
+{% extends 'AdminNav.html' %}
+<html>
+  <head>
+    <title>ImageOptim Admin Page</title>
+  </head>
+
+  <body>
+    {% block main_block %}
+    <h1>Audit Log</h1>
+
+    <br>
+
+    <table style="width:100%">
+      <tr>
+        <th>ID</th>
+        <th>Table</th>
+        <th>Primary Key</th>
+        <th>Field</th>
+        <th>Old Data</th>
+        <th>New Data</th>
+        <th>Delete Log</th> <!-- Button, calling the "/Delete/Purchase" route with the PurchaseID provided -->
+      </tr>
+      <!-- For each item provided to the page -->
+      {% for item in data %}
+        <!-- Create a row in the table, and populate it with data -->
+        <tr>
+          <th>{{item[0]}}</th>
+          <th>{{item[1]}}</th>
+          <th>{{item[2]}}</th>
+          <th>{{item[3]}}</th>
+          <th>{{item[4]}}</th>
+          <th>{{item[5]}}</th>
+          <th><a href="{{url_for('deleteAuditData', auditID = item[0])}}">Delete Log</a></th>
+        </tr>
+      {% endfor %}
+    </table>
+    {% endblock %}
+  </body>
+</html>

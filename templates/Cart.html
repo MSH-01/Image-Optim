@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <title>My Account</title>
+    {% include "Nav.html" %}
+  </head>
+
+  <body>
+    <main>
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>
+                        Cart
+                    </h1>
+                    {% if isempty == False %}
+                    {% for item in cart %}
+                    <div class="row pt-5">
+                        <div class="col-md-4">
+                            <img class="img-fluid" alt="{{item[0][0][2]}}" src={{item[0][0][4]}} />
+                        </div>
+                        <div class="col-md-8">
+                                <div class="row">
+                                <div class="col-md-4">
+                                    <h3 class="text">
+                                        {{item[0][0][2]}}
+                                    </h3>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4 pl-5">
+                                     <a href="/RemoveFromCart/{{item[4]}}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                </div>
+                                </div>                              
+                            <dl>
+                                <dt>
+                                    Product Description
+                                </dt>
+                                <dd>
+                                   {{item[0][0][3]}}
+                                </dd>
+                                <dt>
+                                    Product Specification
+                                </dt>
+                                <dd>
+                                   Base Price: £{{item[0][0][1]}}0
+                                   <br/>
+                                   License Type: {{item[5][0][1]}}
+                                   <br/>
+                                   Company Size: {{item[2][0][1]}} (+£{{item[2][0][2]}}0)
+                                </dd>
+                            </dl>
+                            <h4>
+                                £{{item[3]}}0
+                            </h4>
+                            <div class="pt-4 pb-4">
+                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <h3 class="pl-3 pt-4 pb-4">
+                        Total Cost: £{{price}}0
+                    </h3>
+                </div>
+            </div>
+            <a href="/Checkout" class="btn btn-block btn-lg btn-primary">
+                Checkout
+            </a>
+            <br/>
+        </div>
+        {% else %}
+        <h3>{{cart}}</h3>
+        <div class="pt-4 pb-4">
+            <a href="/" class="btn btn-block btn-lg btn-primary">
+                Continue Shopping
+            </a>
+        {% endif %}
+    </main>
+</body>
+</html>

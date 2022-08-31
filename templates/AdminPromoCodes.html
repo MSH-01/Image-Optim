@@ -1,0 +1,49 @@
+{% extends 'AdminNav.html' %}
+
+{% block main_block %}
+
+  <h2>Add Code</h2>
+  <form method="POST" action="/PromoCodes/Add">
+    <label for="code">Code: </label>
+    <input type="text" id="code" name="code"><br>
+
+    <label for="type">Discount Type:</label><br>
+    <input type="radio" id="percentage" name="type" value="percentage">
+    <label for="percentage">Percentage</label><br>
+    <input type="radio" id="fixed" name="type" value="fixed">
+    <label for="fixed">Fixed</label><br>
+
+    <label for="discountValue">Discount: </label>
+    <input type="text" id="discountValue" name="discountValue"><br>
+
+    <label for="validUser">User: </label>
+    <input type="text" id="validUser" name="validUser"><br>
+
+    <input type="submit">
+  </form>
+
+  <br><br>
+  <h2>Delete Code</h2>
+  <table style="width:100%">
+    <tr>
+      <th>Code ID</th>
+      <th>Code</th>
+      <th>Discount Percentage</th>
+      <th>Set Discount</th>
+      <th>Applicable User</th>
+      <th>Delete Log</th> <!-- Button, calling the "/Delete/PromoCode" route with the CodeID provided -->
+    </tr>
+    <!-- For each PromoCode -->
+    {% for item in data %}
+      <tr>
+        <th>{{item[0]}}</th>
+        <th>{{item[1]}}</th>
+        <th>{{item[2]}}</th>
+        <th>{{item[3]}}</th>
+        <th>{{item[4]}}</th>
+        <th><a href="{{url_for('deleteCode', codeID = item[0])}}">Delete Log</a></th>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

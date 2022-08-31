@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <title>Invoice</title>
+  </head>
+
+  <style>
+
+  body{
+    margin: 20px
+  }
+  .section {
+    margin: 30px
+  }
+
+  h2{
+    margin-bottom: 15px
+  }
+  </style>
+
+  <body>
+
+    <h1 class="text-center pt-3">Your Purchase</h1>
+    <br>
+
+    <div class="container section">
+    <h2>Product</h2>
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>Purchase ID</th>
+          <th>Product</th>
+          <th>License</th>
+          <th>Price</th>
+          <th>Date Purchased</th>
+        </tr>
+
+        <tr>
+         <td>{{InvId}}</td>
+         <td>{{Product[0][0]}}</td>
+         <td>{{License[0][0]}}</td>
+         <td>{{InvPrice}}0</td>
+         <td>{{Date}}</td>
+       </tr>
+        </table>
+    </div>
+
+
+    <div class="container section">
+    <h2>Company</h2>
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>Company Name</th>
+          <th>Contact Name</th>
+          <th>Contact Email</th>
+          <th>Company Size</th>
+          <th>CompanyAddress</th>
+          <th>VAT</th>
+        </tr>
+
+        <tr>
+         <td>{{CompanyName[0][0]}}</td>
+         <td>{{Contact[0][0]}}</td>
+         <td>{{Email[0][0]}}</td>
+         <td>{{CompanySize[0][0]}}</td>
+         <td>{{CompanyAddress[0][0]}}</td>
+         <td>{{InvVAT}}</td>
+       </tr>
+        </table>
+    </div>
+
+  </body>
+</html>

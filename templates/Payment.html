@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <!--
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <title>Proceed To Payment</title>
+    {% include "Nav.html" %}
+
+  </head>
+
+
+  <body>
+    <main>
+      <h1 class="text-center pt-5">Confirm Your Details</h1>
+
+      <!-- Cart Details displayed here -->
+
+      <div class="container">
+
+        {% for item in cart %}
+        <div class="row pt-5">
+            <div class="col-md-4">
+                <img class="img-fluid" alt="{{item[0][0][2]}}" src={{item[0][0][4]}} />
+            </div>
+            <div class="col-md-8">
+                <h3 class="text">
+                    {{item[0][0][2]}}
+                </h3>
+                <dl>
+                    <dt>
+                        Product Description
+                    </dt>
+                    <dd>
+                       {{item[0][0][3]}}
+                    </dd>
+                    <dt>
+                        Product Specification
+                    </dt>
+                    <dd>
+                       Base Price: £{{item[0][0][1]}}
+                       <br/>
+                       License Type: {{item[1]}}
+                       <br/>
+                       Company Size: {{item[2][0][1]}} (+£{{item[2][0][2]}})
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        {% endfor %}
+        <h4>Total Price: £{{price}}<h4><br>
+        </div>
+
+      <br>
+      <!-- Buyer information inserted here -->
+      <form method="POST">
+        <div class="container">
+        <div class="text-center pb-4">
+          <h2>Customer Details</h2>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="CompanyName">Company Name</label>
+            <input type="text" class="form-control" id="CompanyName" name="CompanyName" value="{{user[1]}}" readonly>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="ContactName">Contact Name</label>
+            <input type="text" class="form-control" id="ContactName" name="ContactName" value="{{user[2]}}" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+        <label for="ContactEmail">Contact Email</label>
+        <input type="text" class="form-control" id="ContactEmail" name="ContactEmail" value="{{user[0]}}"  readonly>
+        </div>
+        <div class="form-group">
+          <label for="Address">Address</label>
+          <input type="text" class="form-control" id="Address" name="Address" value="{{user[3]}}" readonly >
+        </div>
+        </form>
+        <button id="checkout-button">Checkout</button>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{ key }}"
+        data-description="A Flask Charge"
+        data-amount="500"
+        data-locale="auto"></script>
+        </div>
+      </form>
+    <br/>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<html lang="en" dir="ltr">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    </head>
+
+    <body>
+      <main>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-4">
+                  <h2>
+                    {{name}}, a Promo Code has been applied to you.
+                  </h2>
+                </div>
+
+                <div class="col-md-4">
+                  {% if type == "percentage" %}
+                    The code is: {{code}}, and applies a discount of {{discount}}%.
+                  {% elif type == "fixed" %}
+                    The code os {{code}}, and applies a discount of £{{discount}}.
+                  {% endif %}
+                </div>
+
+                <div class="col-md-4">
+                  You must be logged into your account in order to use this feature.
+                </div>
+
+                <div class="col-md-4">
+                  Sincierly,
+                  ImageOptim Admin Team
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </body>
+</html>

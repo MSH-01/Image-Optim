@@ -1,0 +1,38 @@
+{% extends 'AdminNav.html' %}
+<html>
+  <head>
+    <title>ImageOptim Admin Page</title>
+
+    <style>
+      
+    </style>
+  </head>
+
+  <body>
+    {% block main_block %}
+    <h1>User Log</h1>
+
+    <table style="width:100%">
+      <tr>
+        <th>User ID              </th>
+        <th>Contact Email        </th>
+        <th>Password             </th>
+        <th>Company Name         </th>
+        <th>Company Size         </th>
+        <th>Delete Log           </th> <!-- Button, calling the "/Delete/User" route with the UserID provided -->
+      </tr>
+      <!-- For each item in the dataToSend table -->
+      {% for item in dataToSend %}
+        <tr>
+          <th>{{item[0]}}</th>
+          <th>{{item[1]}}</th>
+          <th>{{item[2]}}</th>
+          <th>{{item[3]}}</th>
+          <th>{{item[4]}}</th>
+          <th><a href="{{url_for('deleteUserData', user_id = item[0])}}">Delete Log</a></th>
+        </tr>
+      {% endfor %}
+    </table>
+    {% endblock %}
+  </body>
+</html>

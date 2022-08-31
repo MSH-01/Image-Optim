@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Bootstrap load -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <!-- Meta stuff for Bootstrap -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- Font Awesome for icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <header id = "nav_bar">
+      {% include "Nav.html" %}
+    </header>
+
+    <div id = "main_block">
+      {% block main_block %}
+        <p>Page Under Construction</p>
+      {% endblock %}
+    </div>
+  </body>
+</html>
